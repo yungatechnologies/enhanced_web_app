@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "yunga-232719": {
+      "hosting": {
+        "yunga_web_app": [
+          "yunga-232719"
+        ]
+      }
+    },
+    "yunga-test": {
+      "hosting": {
+        "yunga_web_app": [
+          "yunga-test"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "yunga-test"
+  }
+}
