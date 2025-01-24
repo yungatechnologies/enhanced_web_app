@@ -42,58 +42,50 @@ import { DoorbellDetailsComponent } from './dashboard/doorbell-details/doorbell-
 import { LoginComponent } from './login/login.component';
 import { ContentComponent } from './content/content.component';
 import { AuthGuard } from './login/auth-guard.service';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    DetailViewerComponent,
-    MainComponent,
-    SideNavComponent,
-    DashboardComponent,
-    CustomersComponent,
-    DevicesComponent,
-    CommunitiesComponent,
-    NetworksComponent,
-    UsersComponent,
-    RapidRespondersComponent,
-    CustomerPopupComponent,
-    DevicePopupComponent,
-    CommunitiesPopupComponent,
-    NetworksPopupComponent,
-    DeviceListComponent,
-    AlarmDetailsComponent,
-    DoorbellDetailsComponent,
-    LoginComponent,
-    ContentComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatWidgetsModule,
-    ReactiveFormsModule,
-    MatNativeDateModule,
-    FormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    ChartModule,
-    MatDatepickerModule,
-    HttpClientModule,
-    provideFirestore(() => getFirestore()),
-    provideFirebaseApp(() => initializeApp(environment.firebase))
-
-  ],
-  providers: [
-
-    ScreenTrackingService, UserTrackingService,AuthGuard,
-    { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] }
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        DetailViewerComponent,
+        MainComponent,
+        SideNavComponent,
+        DashboardComponent,
+        CustomersComponent,
+        DevicesComponent,
+        CommunitiesComponent,
+        NetworksComponent,
+        UsersComponent,
+        RapidRespondersComponent,
+        CustomerPopupComponent,
+        DevicePopupComponent,
+        CommunitiesPopupComponent,
+        NetworksPopupComponent,
+        DeviceListComponent,
+        AlarmDetailsComponent,
+        DoorbellDetailsComponent,
+        LoginComponent,
+        ContentComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        MatWidgetsModule,
+        ReactiveFormsModule,
+        MatNativeDateModule,
+        FormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        ChartModule,
+        MatDatepickerModule,
+        provideFirestore(() => getFirestore()),
+        provideFirebaseApp(() => initializeApp(environment.firebase))], providers: [
+        ScreenTrackingService, UserTrackingService, AuthGuard,
+        { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
